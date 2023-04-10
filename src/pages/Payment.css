@@ -1,0 +1,56 @@
+.section{
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.box_infomation{
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: rgba(255,255,255,0.3);
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    padding: 8px 16px;
+}
+.box_infomation_payment{
+    background-color: rgba(255,255,255,0.3);
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+    height: 300px;
+    padding: 8px 16px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+    column-gap: 20px;
+}
+.bt_back_payment{
+    background-color: #282A35;
+    color: white;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 10rem;
+    margin-left: 0rem;
+    display: block;
+    width: 120px;
+    height: 70px;
+    border-radius: 10px;
+}
+.bt_next_payment{
+    background-color: #282A35;
+    color: white;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 10rem;
+    margin-right: 0rem;
+    display: block;
+    width: 120px;
+    height: 70px;
+    border-radius: 10px;
+}

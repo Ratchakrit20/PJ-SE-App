@@ -1,0 +1,12 @@
+.bt_next_done{
+    background-color: #282A35;
+    color: white;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 10rem;
+    margin-left: 75rem;
+    display: block;
+    width: 120px;
+    height: 70px;
+    border-radius: 10px;
+}
