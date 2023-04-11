@@ -35,6 +35,7 @@ function Delete1() {
           <div className="App container">
           <div className="employees">
             <button className='btn btn-primary' onClick={getEmployees}>Show employees</button>
+            <button className='btn btn-danger' onClick={()=>window.location.reload(false)}>Reload</button>
               <p></p>
               {employeeList.map((val,key)=>{
                 console.log(key)

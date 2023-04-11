@@ -9,18 +9,18 @@ function Thank() {
     const [imageFile, setImageFile] = useState('');
 
     const handleFileInputChange = (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onloadend = () => {
-            setImageFile(reader.result);
-        }
+        // const file = e.target.files[0];
+        // const reader = new FileReader();
+        // reader.readAsDataURL(file);
+        // reader.onloadend = () => {
+        //     setImageFile(reader.result);
+        // }
     }
 
     const handleSubmitFile = (e) => {
-        e.preventDefault();
-        if (!previewSource) return;
-        Axios.put(`api url`, { data: imageFile});
+        // e.preventDefault();
+        // if (!previewSource) return;
+        // Axios.put(`api url`, { data: imageFile});
     }
     return(
         <div>

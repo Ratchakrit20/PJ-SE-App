@@ -1,23 +1,44 @@
 import './Payment.css'
 import { Link} from 'react-router-dom'
 // import BookTicket from './BookTicket';
-import { useState } from 'react';
+import { useState ,useEffect} from 'react';
 import Axios from 'axios';
-
-function Cheak() {
     
+function Cheak() {
     const [phonenumber,setphonenumber] = useState("");
     const [employeeList,setEmployeeList] = useState([]);
-    const getEmployees = (phonenumber,e) =>{
+    const [reloadPage, setReloadPage] = useState(true);
+    
+    function getEmployees (phonenumber) {
+        
         Axios.get(`http://localhost:3001/databasetrain1/${phonenumber}`).then((response) => {
             console.log(response.data)
-          setEmployeeList(response.data);
-           
+            setEmployeeList(response.data);
+            console.log(employeeList)
         });
     }
 
+
+    // useEffect(() => {
+        
+    //     // reload()
+    //     console.log(reloadPage)
+    //     if (reloadPage) {
+    //       window.location.reload();
+          
+    //       setReloadPage(false)
+    //       console.log(reloadPage)
+    //     }
+    // }, [reloadPage]);
+
+
+
+    // const reload = () => {
+    //     setReloadPage(true);
+    //   };
+
     return(
-        <div>
+        <div >
             <header>
                 <Link to="/" ><img className='bt_home' src='/train3.jpg' alt='home'/></Link>
                 <h2 className='header'> Check BookTicket </h2> 
@@ -32,6 +53,7 @@ function Cheak() {
                             setphonenumber(event.target.value)
                         }}
                 />
+                <button type="primary" className='bt' onClick={()=>window.location.reload()}> รีเฟรช </button>
                 <button type="primary" className='bt' onClick={()=>{getEmployees(phonenumber)}}> ตรวจสอบ </button>
             </div>
             
