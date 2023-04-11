@@ -1,41 +1,54 @@
 import './Thank.css'
 import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import Axios from 'axios';
 
 function Thank() {
+    Axios.defaults.withCredentials = true;
+    const previewSource = true;
+    const [imageFile, setImageFile] = useState('');
+
+    const handleFileInputChange = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            setImageFile(reader.result);
+        }
+    }
+
+    const handleSubmitFile = (e) => {
+        e.preventDefault();
+        if (!previewSource) return;
+        Axios.put(`api url`, { data: imageFile});
+    }
     return(
         <div>
             <header>
                 <Link to="/" ><img className='bt_home' src='/train3.jpg' alt='home'/></Link>
-                <h2 className='header'> Thank you </h2> 
+                <h2 className='header'> Payment </h2> 
             </header>
             <section className='section'>
                     <div className='grid'>
-                        <div className='box_infomation'>
-                            <h3>ข้อมูลส่วนตัว</h3>
-                            <ul>
-                                <li>เย็ดหี</li>
-                                <li>เย็ดหี</li>
-                                <li>เย็ดหี</li>
-                            </ul>
-                        </div>
-                        <div className='box_infomation'>
-                            <h3>ข้อมูลตั๋ว</h3>
-                            <p>ควย</p>
-                            <ol>
-                                <li>เย็ดหี</li>
-                                <li>เย็ดหี</li>
-                                <li>เย็ดหี</li>
-                            </ol>
-                        </div>   
                     </div>
                     <div className='box_infomation_payment'>
                         <h3>การชำระเงิน</h3>
-                        <p>ควย</p>
-                        <p>ควย</p>
-                        <p>ควย</p>
+                        <img className='pic_payment' src='/payment.jpg'/>                       
                     </div>
-                    <div className='grid'>                   
-                        <Link to='/'><button type="primary" className='bt_next_done' > เสร็จสิ้น </button></Link>     
+                    <div className='upload'>
+                        <form onSubmit={handleSubmitFile} >
+                            <input
+                                type="file"
+                                onChange={handleFileInputChange}
+                            />
+                            <button type="submit">
+                                submit
+                            </button>
+                        </form >
+                    </div >
+
+                    <div className='grid'>
+                        <Link to='/' ><button type="primary" className='bt_next_payment' > เสร็จสิ้น </button></Link>     
                     </div>
             </section>
         </div>

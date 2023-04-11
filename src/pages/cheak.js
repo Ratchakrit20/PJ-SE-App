@@ -8,28 +8,33 @@ function Cheak() {
     
     const [phonenumber,setphonenumber] = useState("");
     const [employeeList,setEmployeeList] = useState([]);
-    const getEmployees = (phonenumber) =>{
+    const getEmployees = (phonenumber,e) =>{
         Axios.get(`http://localhost:3001/databasetrain1/${phonenumber}`).then((response) => {
             console.log(response.data)
           setEmployeeList(response.data);
+           
         });
-      }
+    }
 
     return(
         <div>
             <header>
                 <Link to="/" ><img className='bt_home' src='/train3.jpg' alt='home'/></Link>
-                <h2 className='header'> Payment </h2> 
+                <h2 className='header'> Check BookTicket </h2> 
             </header>
-            <input 
-                    type="text"  
-                    placeholder=' เบอร์โทรศัพท์ '  
-                    className="field"
-                    onChange={(event)=>{
-                        setphonenumber(event.target.value)
-                    }}
+            <div className='row_input'>
+                <input 
+                        type="text"  
+                        placeholder=' เบอร์โทรศัพท์ '  
+                        // style={{marginLeft:"59rem"}}
+                        className="field"
+                        onChange={(event)=>{
+                            setphonenumber(event.target.value)
+                        }}
                 />
-            <button type="primary" className='bt_next' onClick={()=>{getEmployees(phonenumber)}}> get </button>
+                <button type="primary" className='bt' onClick={()=>{getEmployees(phonenumber)}}> ตรวจสอบ </button>
+            </div>
+            
             <section className='section'>
                     <div className='grid'>
                         <div className='box_infomation'>
@@ -67,16 +72,8 @@ function Cheak() {
                             })}
                         </div>   
                     </div>
-                    <div className='box_infomation_payment'>
-                        <h3>การชำระเงิน</h3>
-                        <p>ควย</p>
-                        <p>ควย</p>
-                        <p>ควย</p>
-                    </div>
-                    <div className='grid'>
                                          
-                        <Link to='./Thank' ><button type="primary" className='bt_next_payment' > ถัดไป </button></Link>     
-                    </div>
+                        <Link to='/' ><button type="primary" className='bt' > กลับ </button></Link>     
             </section>
         </div>
         

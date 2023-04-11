@@ -11,7 +11,7 @@ function Payment() {
     const navigate = useNavigate();
     const [phonenumber,setphonenumber] = useState("NULL");
     const [employeeList,setEmployeeList] = useState([]);
-    const [number, setNumber] = useState(0)
+    // const [number, setNumber] = useState(0)
     const [reloadPage, setReloadPage] = useState(false);
     // const getEmployees = (phonenumber) =>{
     //     Axios.get(`http://localhost:3001/databasetrain/${phonenumber}`).then((response) => {

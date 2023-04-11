@@ -22,7 +22,7 @@ function Home() {
     return (
         <div>
             <header>
-                <Link to="./Admin" ><img className='pic_admin' src='/admin2.png' alt='home'/></Link>
+                <Link to="./Admin" ><img className='pic_admin' style={{marginLeft:"5rem"}} src='/admin2.png' alt='home'/></Link>
                 <h2 className='header_main'>จองตั๋วรถไฟ</h2>
             </header>   
             <div className = 'pic'>

@@ -1,13 +1,13 @@
 import './Personalinfo.css'
-import { useState,useEffect } from 'react';
-import {Link, useNavigate} from 'react-router-dom'
+import { useState} from 'react';
+import {Link} from 'react-router-dom'
 import "./Admin.css"
 import axios from 'axios';
 
 function Delete1() {
-    const navigate = useNavigate();
-    const [id,setid] = useState("")
-    const [password,setpassword] = useState("")
+    // const navigate = useNavigate();
+    // const [id,setid] = useState("")
+    // const [password,setpassword] = useState("")
     const [employeeList,setEmployeeList]=useState([])
     
     const getEmployees = () =>{
@@ -20,23 +20,22 @@ function Delete1() {
         axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
           setEmployeeList(
             employeeList.filter((val) => {
-              return val.id != id;
+              return val.id !== id;
             })
           );
         });
-      };
-
-    
-
-        
+      };      
     return(
-        <div className="App container">
-          <h1>แก้ไขข้อมูลลูกค้า</h1>
-      
-            <hr/>
-            <div className="employees">
+        <div>
+          <header>
+            <Link to="/" ><img className='bt_home' src='/train3.jpg' alt='home'/></Link>
+            <h2 className='header'> ตรวจสอบ </h2> 
+          </header>
+          <p></p>
+          <div className="App container">
+          <div className="employees">
             <button className='btn btn-primary' onClick={getEmployees}>Show employees</button>
-              
+              <p></p>
               {employeeList.map((val,key)=>{
                 console.log(key)
                 return(
@@ -53,8 +52,7 @@ function Delete1() {
                       <p className="card-text">ชั้นที่นั่ง : {val.class1}</p>
                       <p className="card-text">ราคาตั๋ว : {val.total1}</p>
                       <div className='d-flex'>
-                      
-                        
+                    
                       <button className='btn btn-danger' onClick={()=>{deleteEmployee(val.id)}}>Delete</button>
                       </div>
                       
@@ -63,6 +61,8 @@ function Delete1() {
                 )
               })}
             </div>
+          </div>
+            
 
     </div>
 

@@ -63,14 +63,6 @@ function BookTicket() {
         });
       };
 
-
-
-
-
-
-
-
-
     return(
         <div>
             <header>
