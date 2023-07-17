@@ -37,17 +37,17 @@ app.get('/databasetrain1/:phonenumber',(req,res) =>{
     });
 });
 
-// app.get('/admin',(req,res) =>{
-//     const phonenumber = req.params.phonenumber;
-//     db.query("SELECT * FROM admin",(err,result) =>{
-//         if(err){
-//             console.log(err);
-//         }
-//         else{
-//             res.send("Values inserted");
-//         }
-//     });
-// });
+app.get('/admin',(req,res) =>{
+    const phonenumber = req.params.phonenumber;
+    db.query("SELECT * FROM admin",(err,result) =>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.send("Values inserted");
+        }
+    });
+});
 
 
 

@@ -77,3 +77,25 @@
     height: 70px; */
     /* border-radius: 10px; */
 }
+
+.bt_reload{
+    background-color: #ff6385;
+    color: white;
+    font-size: 20px;
+    margin-top: -5.4rem;
+    margin-left: 75rem;
+    display: block;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+}
+.bt_reload_admin{
+    background-color: #ff6385;
+    color: white;
+    font-size: 20px;
+    margin: auto;
+    display: block;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+}

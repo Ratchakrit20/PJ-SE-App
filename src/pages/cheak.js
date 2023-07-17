@@ -1,50 +1,32 @@
 import './Payment.css'
 import { Link} from 'react-router-dom'
 // import BookTicket from './BookTicket';
-import { useState ,useEffect} from 'react';
+import { useState } from 'react';
 import Axios from 'axios';
-    
+
 function Cheak() {
+    
     const [phonenumber,setphonenumber] = useState("");
     const [employeeList,setEmployeeList] = useState([]);
-    const [reloadPage, setReloadPage] = useState(true);
-    
-    function getEmployees (phonenumber) {
-        
+    const getEmployees = (phonenumber,e) =>{
         Axios.get(`http://localhost:3001/databasetrain1/${phonenumber}`).then((response) => {
             console.log(response.data)
-            setEmployeeList(response.data);
-            console.log(employeeList)
+          setEmployeeList(response.data);
         });
     }
 
-
-    // useEffect(() => {
-        
-    //     // reload()
-    //     console.log(reloadPage)
-    //     if (reloadPage) {
-    //       window.location.reload();
-          
-    //       setReloadPage(false)
-    //       console.log(reloadPage)
-    //     }
-    // }, [reloadPage]);
-
-
-
-    // const reload = () => {
-    //     setReloadPage(true);
-    //   };
+    // function refreshPage() {
+    //     window.location.reload(false);
+    // }
 
     return(
-        <div >
+        <div>
             <header>
                 <Link to="/" ><img className='bt_home' src='/train3.jpg' alt='home'/></Link>
                 <h2 className='header'> Check BookTicket </h2> 
             </header>
             <div className='row_input'>
-                <input 
+                    <input 
                         type="text"  
                         placeholder=' เบอร์โทรศัพท์ '  
                         // style={{marginLeft:"59rem"}}
@@ -52,9 +34,10 @@ function Cheak() {
                         onChange={(event)=>{
                             setphonenumber(event.target.value)
                         }}
-                />
-                <button type="primary" className='bt' onClick={()=>window.location.reload()}> รีเฟรช </button>
-                <button type="primary" className='bt' onClick={()=>{getEmployees(phonenumber)}}> ตรวจสอบ </button>
+                    />
+                    <p style={{color:"red"}}>*ถ้าข้อมูลไม่ขึ้นโปรดกดปุ่มรีเฟรช*</p>
+                    <button type="primary" className='bt_reload' onClick={() => window.location.reload(false)}> รีเฟรช </button>
+                <button style={{marginTop:"-0.2rem"}} type="primary" className='bt' onClick={()=>{getEmployees(phonenumber)}}> ตรวจสอบ </button>
             </div>
             
             <section className='section'>

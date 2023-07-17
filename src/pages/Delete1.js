@@ -1,5 +1,6 @@
 import './Personalinfo.css'
 import { useState} from 'react';
+import {  Container, Table } from "react-bootstrap";
 import {Link} from 'react-router-dom'
 import "./Admin.css"
 import axios from 'axios';
@@ -35,9 +36,10 @@ function Delete1() {
           <div className="App container">
           <div className="employees">
             <button className='btn btn-primary' onClick={getEmployees}>Show employees</button>
-            <button className='btn btn-danger' onClick={()=>window.location.reload(false)}>Reload</button>
+            <p style={{color:"red"}}>*ถ้าข้อมูลไม่ขึ้นโปรดกดปุ่มรีเฟรช*</p>
+            <button type="primary" className='bt_reload_admin' onClick={() => window.location.reload(false)}> รีเฟรช </button>
               <p></p>
-              {employeeList.map((val,key)=>{
+              {/* {employeeList.map((val,key)=>{
                 console.log(key)
                 return(
                   <div className='emplyee card'>
@@ -60,20 +62,48 @@ function Delete1() {
                     </div>
                   </div>
                 )
-              })}
+              })} */}
+              <Container>
+                <Table style={{border:"black"}} striped bordered hover variant="white" >
+                    <thead style={{background:"#BDE2FF"}}>
+                        <tr>
+                            <th width="30%">ชื่อ</th>
+                            <th width="30%">นามสกุล</th>
+                            <th width="30%">ที่อยู่</th>
+                            <th width="30%">เบอร์โทรศัพท์</th>
+                            <th width="30%">Email</th>
+                            <th width="30%">ต้นทาง</th>
+                            <th width="30%">ปลายทาง</th>
+                            <th width="30%">เวลา</th>
+                            <th width="30%">ชั้น</th>
+                            <th width="30%">ราคาตั๋ว</th>
+                            <th width="30%">ลบข้อมูล</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {employeeList.map((element, index)=>{
+                            return  (
+                            <tr key={index}>
+                                <td>{element.firstname}</td>
+                                <td>{element.lastname}</td>
+                                <td>{element.address}</td>
+                                <td>{element.phonenumber}</td>  
+                                <td>{element.email}</td>
+                                <td>{element.origin1}</td>
+                                <td>{element.destination1}</td>
+                                <td>{element.time1}</td>
+                                <td>{element.class1}</td> 
+                                <td>{element.total1}</td>
+                                <td>{<button className='btn btn-danger' onClick={()=>{deleteEmployee(element.id)}}>Delete</button>}</td>                          
+                            </tr>)
+                        })}
+                    </tbody>
+                </Table>
+            </Container>          
+
             </div>
           </div>
-            
-
-    </div>
-
-
-
-
-
-
-
-                
+    </div>            
     )
 }
 
